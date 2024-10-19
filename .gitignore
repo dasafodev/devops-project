@@ -1,0 +1,42 @@
+# Entorno de Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+env/
+venv/
+ENV/
+.venv/
+.Python
+
+# Archivos de configuración de entorno virtual de VSCode
+.vscode/
+
+# Archivos de log
+*.log
+
+# Archivos de bases de datos
+*.sqlite3
+*.db
+
+# Archivos de configuración específicos de la máquina local
+instance/
+config.py
+.env
+
+# Distribución
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Archivos creados por herramientas de despliegue o empaquetado
+*.coverage
+*.pytest_cache/
+htmlcov/
+
+# MacOS specific
+.DS_Store
+
+# Otros posibles archivos de configuración o IDEs
+.idea/
