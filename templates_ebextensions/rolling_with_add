@@ -7,6 +7,5 @@ option_settings:
     InstanceTypes: t2.micro
 
   aws:elasticbeanstalk:command:
-    DeploymentPolicy: AllAtOnce
-
+    DeploymentPolicy: RollingWithAdditionalBatch
 

@@ -9,4 +9,3 @@ option_settings:
   aws:elasticbeanstalk:command:
     DeploymentPolicy: AllAtOnce
 
-

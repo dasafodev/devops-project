@@ -36,6 +36,10 @@ blacklist_schema = BlacklistSchema()
 def health_check():
     return make_response(jsonify({"status": "healthy"}), 200)
 
+@application.route('/version', methods=['GET'])
+def version():
+    return make_response(jsonify({"version": "1.0.0"}), 200)
+
 @application.route('/get-token', methods=['POST'])
 def get_token():
     return jsonify(access_token=create_access_token(identity='test'))
