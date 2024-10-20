@@ -40,7 +40,4 @@ htmlcov/
 
 # Otros posibles archivos de configuración o IDEs
 .idea/
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+

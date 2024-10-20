@@ -7,16 +7,16 @@ from datetime import datetime
 import uuid
 import os
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:postgres@miso-devops-db.clkg7wpaxqmo.us-east-1.rds.amazonaws.com/miso_devops_db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'miso-devops-password'
+application.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:postgres@miso-devops-db.clkg7wpaxqmo.us-east-1.rds.amazonaws.com/miso_devops_db')
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+application.config['JWT_SECRET_KEY'] = 'miso-devops-password'
 
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
-api = Api(app)
-jwt = JWTManager(app)
+db = SQLAlchemy(application)
+ma = Marshmallow(application)
+api = Api(application)
+jwt = JWTManager(application)
 
 class Blacklist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,11 +32,11 @@ class BlacklistSchema(ma.SQLAlchemyAutoSchema):
 
 blacklist_schema = BlacklistSchema()
 
-@app.route('/', methods=['GET'])
+@application.route('/', methods=['GET'])
 def health_check():
     return make_response(jsonify({"status": "healthy"}), 200)
 
-@app.route('/get-token', methods=['POST'])
+@application.route('/get-token', methods=['POST'])
 def get_token():
     return jsonify(access_token=create_access_token(identity='test'))
 
@@ -80,7 +80,7 @@ class BlacklistCheckResource(Resource):
             }
         return {'is_blacklisted': False}
 
-@app.route('/clear-blacklist', methods=['DELETE'])
+@application.route('/clear-blacklist', methods=['DELETE'])
 @jwt_required()
 def clear_blacklist():
     db.session.query(Blacklist).delete()
@@ -91,10 +91,10 @@ api.add_resource(BlacklistResource, '/blacklists')
 api.add_resource(BlacklistCheckResource, '/blacklists/<string:email>')
 
 
-with app.app_context():
+with application.app_context():
     print("Creando tablas...")
     db.create_all()
     print("Tablas creadas exitosamente")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
