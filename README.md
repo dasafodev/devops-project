@@ -20,3 +20,11 @@ docker run -p 8080:5000 devops-project:latest
 ```bash
 curl http://localhost:8080/
 ```
+
+# Test application
+
+The app is tested using newman. Install newman using `npm install -g newman` and run the following command to test the app.
+
+```bash
+newman run test/devops-api-tests.postman_collection.json
+```
