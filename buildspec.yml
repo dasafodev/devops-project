@@ -10,16 +10,13 @@ phases:
       - pip install Flask
       - pip install unittest2
 
-  run_tests:
-    commands:
-      - echo Running tests...
-      - python -m unittest discover -s test -p "*.py"
-
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 043395621549.dkr.ecr.us-east-1.amazonaws.com
       - echo Logged in to Amazon ECR successfully
+      - echo Running tests...
+      - python -m unittest discover -s test -p "*.py"
 
   build:
     commands:
