@@ -4,7 +4,6 @@ phases:
   pre_build:
     commands:
       - echo Installing Docker...
-      - yum update -y
       - amazon-linux-extras install docker -y
       - service docker start
       - usermod -a -G docker ec2-user
