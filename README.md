@@ -23,6 +23,17 @@ curl http://localhost:8080/
 
 # Test application
 
+## Unit testing: Test the app with unittest
+
+To test the app, run the following command:
+
+```bash
+cd test/
+python -m unittest test_app.py
+```
+
+## Integration testing: API tests with Docker and Newman
+
 The app is tested using newman. Install newman using `npm install -g newman` and run the following command to test the app.
 
 ```bash
