@@ -4,9 +4,6 @@ phases:
   pre_build:
     commands:
       - echo Installing Docker...
-      - amazon-linux-extras install docker -y
-      - service docker start
-      - usermod -a -G docker ec2-user
       - docker info
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 043395621549.dkr.ecr.us-east-1.amazonaws.com
