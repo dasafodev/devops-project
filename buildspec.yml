@@ -1,6 +1,20 @@
 version: 0.1
 
 phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo Installing dependencies...
+      - pip install -r requirements.txt
+      - pip install Flask
+      - pip install unittest2
+
+  run_tests:
+    commands:
+      - echo Running tests...
+      - python -m unittest discover -s test -p "*.py"
+
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
