@@ -22,7 +22,7 @@ class ApplicationTestCase(unittest.TestCase):
 
     def test_health_check(self):
         response = self.app.get('/')
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json, {"status": "healthy"})
 
     def test_version(self):
