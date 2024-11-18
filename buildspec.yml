@@ -30,3 +30,17 @@ phases:
       - docker tag flask_image:latest 043395621549.dkr.ecr.us-east-1.amazonaws.com/devops_blacklists:latest
       - docker push 043395621549.dkr.ecr.us-east-1.amazonaws.com/devops_blacklists:latest
       - echo Flask image pushed to ECR
+artifacts:
+  files:
+    - '**/*'
+    - imagedefinitions.json
+    - imageDetail.json
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.json
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetail.json
+
