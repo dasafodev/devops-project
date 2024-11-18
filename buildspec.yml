@@ -30,6 +30,9 @@ phases:
       - docker tag flask_image:latest 043395621549.dkr.ecr.us-east-1.amazonaws.com/devops_blacklists:latest
       - docker push 043395621549.dkr.ecr.us-east-1.amazonaws.com/devops_blacklists:latest
       - echo Flask image pushed to ECR
+      - printf '[{"name":"flask_image","imageUri":"043395621549.dkr.ecr.us-east-1.amazonaws.com/devops_blacklists:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"043395621549.dkr.ecr.us-east-1.amazonaws.com/devops_blacklists:latest"}' > imageDetail.json
+      - cat imagedefinitions.json 
 artifacts:
   files:
     - '**/*'
